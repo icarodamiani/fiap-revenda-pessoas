@@ -1,0 +1,57 @@
+{
+  "AttributeDefinitions": [
+    {
+      "AttributeName": "ID",
+      "AttributeType": "S"
+    },
+    {
+      "AttributeName": "VENDIDO",
+      "AttributeType": "S"
+    }
+  ],
+  "TableName": "veiculos_tb",
+  "KeySchema": [
+    {
+      "AttributeName": "ID",
+      "KeyType": "HASH"
+    }
+  ],
+  "TableStatus": "ACTIVE",
+  "CreationDateTime": "2024-09-13T18:54:13.294Z",
+  "ProvisionedThroughput": {
+    "LastIncreaseDateTime": "1970-01-01T00:00:00.000Z",
+    "LastDecreaseDateTime": "1970-01-01T00:00:00.000Z",
+    "NumberOfDecreasesToday": 0,
+    "ReadCapacityUnits": 3,
+    "WriteCapacityUnits": 3
+  },
+  "TableSizeBytes": 214,
+  "ItemCount": 2,
+  "TableArn": "arn:aws:dynamodb:ddblocal:000000000000:table/veiculos_tb",
+  "GlobalSecondaryIndexes": [
+    {
+      "IndexName": "VendidoIndex",
+      "KeySchema": [
+        {
+          "AttributeName": "VENDIDO",
+          "KeyType": "HASH"
+        },
+        {
+          "AttributeName": "ID",
+          "KeyType": "RANGE"
+        }
+      ],
+      "Projection": {
+        "ProjectionType": "ALL"
+      },
+      "IndexStatus": "ACTIVE",
+      "ProvisionedThroughput": {
+        "ReadCapacityUnits": 3,
+        "WriteCapacityUnits": 3
+      },
+      "IndexSizeBytes": 214,
+      "ItemCount": 2,
+      "IndexArn": "arn:aws:dynamodb:ddblocal:000000000000:table/veiculos_tb/index/VendidoIndex"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "AttributeDefinitions": [
+    {
+      "AttributeName": "ID",
+      "AttributeType": "S"
+    },
+    {
+      "AttributeName": "EMITIDO",
+      "AttributeType": "S"
+    }
+  ],
+  "TableName": "documentos_tb",
+  "KeySchema": [
+    {
+      "AttributeName": "ID",
+      "KeyType": "HASH"
+    }
+  ],
+  "TableStatus": "ACTIVE",
+  "CreationDateTime": "2024-09-30T04:42:14.362Z",
+  "ProvisionedThroughput": {
+    "LastIncreaseDateTime": "1970-01-01T00:00:00.000Z",
+    "LastDecreaseDateTime": "1970-01-01T00:00:00.000Z",
+    "NumberOfDecreasesToday": 0,
+    "ReadCapacityUnits": 3,
+    "WriteCapacityUnits": 3
+  },
+  "TableSizeBytes": 0,
+  "ItemCount": 0,
+  "TableArn": "arn:aws:dynamodb:ddblocal:000000000000:table/documentos_tb",
+  "GlobalSecondaryIndexes": [
+    {
+      "IndexName": "EmitidoIndex",
+      "KeySchema": [
+        {
+          "AttributeName": "EMITIDO",
+          "KeyType": "HASH"
+        },
+        {
+          "AttributeName": "ID",
+          "KeyType": "RANGE"
+        }
+      ],
+      "Projection": {
+        "ProjectionType": "ALL"
+      },
+      "IndexStatus": "ACTIVE",
+      "ProvisionedThroughput": {
+        "ReadCapacityUnits": 3,
+        "WriteCapacityUnits": 3
+      },
+      "IndexSizeBytes": 0,
+      "ItemCount": 0,
+      "IndexArn": "arn:aws:dynamodb:ddblocal:000000000000:table/documentos_tb/index/EmitidoIndex"
+    }
+  ]
+}

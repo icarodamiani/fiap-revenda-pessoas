@@ -1,0 +1,50 @@
+version: '3.1'
+
+services:
+  dynamodb:
+    image: amazon/dynamodb-local:1.22.0
+    container_name: dynamo-hck
+    ports:
+      - "8000:8000"
+    command: -jar DynamoDBLocal.jar -sharedDb
+    volumes:
+      - dynamo-hck:/data/db
+    networks:
+      - hck-network
+
+  dynamodb-admin:
+    image: aaronshaf/dynamodb-admin
+    container_name: dynamo-hck-adm
+    ports:
+      - "8001:8001"
+    environment:
+      DYNAMO_ENDPOINT: "http://dynamodb:8000"
+      AWS_REGION: "us-west-2"
+      AWS_ACCESS_KEY_ID: local
+      AWS_SECRET_ACCESS_KEY: local
+    depends_on:
+      - dynamodb
+    networks:
+      - hck-network
+
+  sqs:
+    image: softwaremill/elasticmq:1.4.2
+    container_name: sqs-hck
+    ports:
+      - "9324:9324"
+      - "9325:9325"
+    volumes:
+      - ./sqs-compose.conf:/opt/elasticmq.conf
+      - sqs-hck:/data/db
+    networks:
+      - hck-network
+
+networks:
+  hck-network:
+    driver: bridge
+
+volumes:
+  dynamo-hck:
+    driver: local
+  sqs-hck:
+    driver: local

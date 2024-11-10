@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: fiap-revenda-pessoas
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak/realms/fiap
+aws:
+  sqs:
+    numberOfMessages: 5
+    waitTimeMessage: 10
+    visibilityTimeOut: 30
+    pessoaExclusaoDados:
+      queue: pessoa_exclusao_dados_queue
+      delay: 1000
+      poolSize: 1
+
+management:
+  health:
+    probes:
+      enabled: true
+  endpoint:
+    loggers:
+      enabled: true
+    health:
+      probes:
+        enabled: true
+      show-details: "ALWAYS"
+  endpoints:
+    web:
+      exposure:
+        include: "*"
